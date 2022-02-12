@@ -7,7 +7,6 @@ const articleRouter = require('./routes/articles')
 const Article = require('./models/article')
 const mongoose = require('mongoose')
 const methodOverride = require('method-override')
-
 const app = express()
 
 mongoose.connect(process.env.CLOUD_URL, {
@@ -21,6 +20,7 @@ db.once('open', () => console.log('**Connection established'))
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: false }))
 app.use(methodOverride('_method'))
+app.use(express.static(__dirname + '/public'))
 
 app.get('/', async function (req, res) {
   const articles = await Article.find().sort({ createdAt: 'desc' })
@@ -29,6 +29,14 @@ app.get('/', async function (req, res) {
     pageName: 'Home Page',
     articles: articles,
   })
+})
+
+app.get('/test', function (req, res) {
+  res.render('articles/test')
+})
+
+app.get('/home', function (req, res) {
+  res.render('articles/home')
 })
 
 app.use('/articles', articleRouter)

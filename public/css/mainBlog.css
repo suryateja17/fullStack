@@ -1,0 +1,18 @@
+html,
+body {
+  background-color: #d9f9ff;
+
+  background-image: radial-gradient(#cbd7d4 1.25px, #d9f9ff 1.25px);
+  background-size: 25px 25px;
+  height: 100%;
+  margin: 0;
+}
+.carousel-item {
+  height: 65vh;
+  min-height: 350px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
