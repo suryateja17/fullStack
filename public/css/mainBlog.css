@@ -1,5 +1,7 @@
 html,
-body {
+body,
+main,
+section {
   background-color: #d9f9ff;
 
   background-image: radial-gradient(#cbd7d4 1.25px, #d9f9ff 1.25px);
