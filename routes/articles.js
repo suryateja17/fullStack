@@ -13,6 +13,11 @@ router.get('/blog', async (req, res) => {
   const article = await Article.find().sort({ createdAt: 'desc' })
   res.render('articles/blog', { articles: article })
 })
+
+router.get('/about', async (req, res) => {
+  res.render('articles/about')
+})
+
 router.get('/edit/:id', async (req, res) => {
   const article = await Article.findById(req.params.id)
   res.render('articles/edit', { article: article })
