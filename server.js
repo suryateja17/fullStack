@@ -25,7 +25,7 @@ app.use(express.static(__dirname + '/public'))
 app.get('/', async function (req, res) {
   const articles = await Article.find().sort({ createdAt: 'desc' })
   //res.send('Hello World!')
-  res.render('articles/index', {
+  res.render('articles/home', {
     pageName: 'Home Page',
     articles: articles,
   })
