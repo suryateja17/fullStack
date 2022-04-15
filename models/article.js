@@ -32,7 +32,7 @@ const articleSchema = new mongoose.Schema({
     required: true,
   },
 })
-
+//Validation for article schema
 articleSchema.pre('validate', function (next) {
   if (this.title) {
     this.slug = slugify(this.title, { lower: true, strict: true })
@@ -42,4 +42,5 @@ articleSchema.pre('validate', function (next) {
   }
   next()
 })
+
 module.exports = mongoose.model('Article', articleSchema)

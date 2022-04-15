@@ -1,12 +1,23 @@
 const express = require('express')
 const router = express.Router()
 const Article = require('./../models/article')
+const MediumArticle = require('./../models/mediumArticle')
 
 router.get('/', (req, res) => {
   res.render('articles/new', { article: new Article() })
 })
 router.get('/new', (req, res) => {
   res.render('articles/new', { article: new Article() })
+})
+
+//render medium articles page
+router.get('/mediumArticles', async (req, res) => {
+  const mediumArticle = await MediumArticle.find().sort({ createdAt: 'desc' })
+
+  //const mediumArticle = await MediumArticle.findById('62591c6f08cad23b15eaef26')
+  console.log('>>Found article>> ' + mediumArticle)
+
+  res.render('articles/mediumArticles', { articles: mediumArticle })
 })
 
 router.get('/blog', async (req, res) => {
